@@ -1,9 +1,10 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ children }) => {
   return (
     <footer>
       <p>&copy; 2025 My Website</p>
+      <div>{children}</div>
     </footer>
   );
 };
