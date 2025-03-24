@@ -1,10 +1,9 @@
-import Counter from "./componants/Counter";
-import TodoList from "./componants/TodoList";
+import Profile from "./componants/Profile";
 
 function App() {
   return (
     <>
-      <TodoList />
+      <Profile />
     </>
   );
 }
