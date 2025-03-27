@@ -1,13 +1,13 @@
-import BasicEffect from "../componants/BasicEffect";
-import FetchDataEffect from "../componants/FetchDataEffect";
-import UseContext from "../componants/UseContext";
-
+import UserProfile from "../componants/UserProfile";
+import { UserProvider } from "../componants/UserContext";
+import UserSetter from "../componants/UserSetter";
 function App() {
   return (
     <>
-      <UseContext />
-      <BasicEffect />
-      <FetchDataEffect />
+      <UserProvider>
+        <UserProfile />
+        <UserSetter />
+      </UserProvider>
     </>
   );
 }
