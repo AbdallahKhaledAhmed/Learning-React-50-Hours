@@ -1,13 +1,9 @@
-import UserProfile from "../componants/UserProfile";
-import { UserProvider } from "../componants/UserContext";
-import UserSetter from "../componants/UserSetter";
+import FocusInput from "../componants/FocusInput";
+
 function App() {
   return (
     <>
-      <UserProvider>
-        <UserProfile />
-        <UserSetter />
-      </UserProvider>
+      <FocusInput />
     </>
   );
 }
