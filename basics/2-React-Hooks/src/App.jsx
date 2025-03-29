@@ -1,9 +1,9 @@
-import FocusInput from "../componants/FocusInput";
+import Timer from "../componants/Timer";
 
 function App() {
   return (
     <>
-      <FocusInput />
+      <Timer />
     </>
   );
 }
