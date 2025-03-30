@@ -1,7 +1,7 @@
-import Timer from "../componants/Timer";
-import UniqueId from "../componants/UniqueId";
-import useFetch from "../componants/useFetch";
-import useStateClone from "../componants/useStateClone";
+import Timer from "../components/Timer";
+import UniqueId from "../components/UniqueId";
+import useFetch from "../components/useFetch";
+import useStateClone from "../components/useStateClone";
 
 function App() {
   const [count, setCount] = useStateClone(0);
