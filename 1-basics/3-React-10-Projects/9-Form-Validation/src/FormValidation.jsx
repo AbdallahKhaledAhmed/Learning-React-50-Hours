@@ -60,7 +60,7 @@ const FormValidation = () => {
             style={{ borderColor: usernameColor }}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <p>{errorUsername}</p>
+          <p className="error">{errorUsername}</p>
           <input
             type="text"
             placeholder="E-mail"
@@ -68,7 +68,7 @@ const FormValidation = () => {
             style={{ borderColor: emailColor }}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <p>{errorEmail}</p>
+          <p className="error">{errorEmail}</p>
           <input
             type="password"
             placeholder="Password"
@@ -76,7 +76,7 @@ const FormValidation = () => {
             style={{ borderColor: passwordColor }}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <p>{errorPassword}</p>
+          <p className="error">{errorPassword}</p>
           <input
             type="password"
             placeholder="Confirm Password"
@@ -84,7 +84,7 @@ const FormValidation = () => {
             style={{ borderColor: confirmPasswordColor }}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          <p>{errorConfirmPassword}</p>
+          <p className="error">{errorConfirmPassword}</p>
           <button onClick={valedate} className="submit-btn">
             Submit
           </button>
