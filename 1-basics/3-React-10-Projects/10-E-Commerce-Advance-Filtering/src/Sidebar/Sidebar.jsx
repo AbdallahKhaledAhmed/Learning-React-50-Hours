@@ -1,11 +1,9 @@
-import React from "react";
-
 import "./sidebar.css";
-import Category from "./Category/Category";
-import Colors from "./Colors/Colors";
-import Price from "./Price/Price";
+import Category from "./Category";
+import Colors from "./Colors";
+import Price from "./Price";
 
-const Sidebar = () => {
+const Sidebar = ({ setCategoryQuery, setPriceQuery, setColorsQuery }) => {
   return (
     <section className="sidebar">
       <div className="logo-container">
@@ -13,9 +11,11 @@ const Sidebar = () => {
           <h1>🛒</h1>
         </a>
       </div>
-      <Category />
-      <Colors />
-      <Price />
+      <section>
+        <Category setCategoryQuery={setCategoryQuery} />
+        <Price setPriceQuery={setPriceQuery} />
+        <Colors setColorsQuery={setColorsQuery} />
+      </section>
     </section>
   );
 };

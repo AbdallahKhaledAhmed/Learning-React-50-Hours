@@ -24,3 +24,7 @@ li {
   color: #323232;
   cursor: pointer;
 }
+.btns.selected {
+  background-color: #808080;
+  color: white;
+}

@@ -314,7 +314,7 @@ const data = [
     newPrice: "50",
     company: "Adidas",
     color: "black",
-    category: "flats",
+    category: "heels",
   },
 ];
 

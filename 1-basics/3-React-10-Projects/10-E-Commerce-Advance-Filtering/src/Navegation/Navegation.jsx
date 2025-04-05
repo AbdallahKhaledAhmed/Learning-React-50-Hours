@@ -2,14 +2,14 @@ import { FiHeart } from "react-icons/fi";
 import { AiOutlineShoppingCart, AiOutlineUserAdd } from "react-icons/ai";
 import "./navegation.css";
 
-const Navegation = ({ setQuery }) => {
+const Navegation = ({ setNameQuery }) => {
   return (
     <nav>
       <div>
         <input
           type="text"
           placeholder="Find Shoes"
-          onChange={(e) => setQuery(e.target.value.toLocaleLowerCase())}
+          onChange={(e) => setNameQuery(e.target.value.toLocaleLowerCase())}
         />
       </div>
       <div>
