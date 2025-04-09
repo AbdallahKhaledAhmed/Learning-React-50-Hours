@@ -10,17 +10,11 @@ console.log(greetings);
 console.log(numbers);
 
 /////////////////////////////////////////////////////////////////////////
- i give up for now this is too hard
-// function keyValuePairs<T>(obj: { [key: string]: T }): {
-//   key: string;
-//   value: string;
-// } {
-//   return {key: , value};
-// }
 
-// const stringObject = { a: "apple" };
-// const stringPair = keyValuePairs(stringObject);
+function keyValuePairs(obj: any) {
+  const keys = Object.keys(obj);
+  const randKey = keys[Math.floor(Math.random() * keys.length)];
+  return { key: randKey, value: obj[randKey] };
+}
 
-// const numberObject = { one: 1, two: 2, three: 3 };
-// const numberPair = keyValuePairs(numberObject);
-
+console.log(keyValuePairs({ a: "apple", b: "banana", c: "cherry" }));
