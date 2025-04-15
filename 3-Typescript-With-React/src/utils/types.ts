@@ -1,4 +1,5 @@
 export type Info = {
+  [key: string]: number | string;
   id: number;
   email: string;
   name: string;
@@ -8,3 +9,5 @@ export type Info = {
 // export type AdminInfoList = Info & {
 //   role: string;
 // };
+
+// export type

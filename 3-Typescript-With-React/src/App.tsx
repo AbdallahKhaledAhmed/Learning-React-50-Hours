@@ -3,6 +3,9 @@ import Button from "./components/Button";
 import User from "./components/User";
 import UserInfo from "./components/UserInfo";
 import AdminInfo from "./components/AdminInfo";
+import Counter from "./components/Counter";
+import UserInfoState from "./components/UserInfoState";
+import Todo from "./components/Todo";
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
         salary={50000}
         role="Team Lead"
       />
+      <Counter />
+      <UserInfoState />
+      <Todo />
     </>
   );
 }
