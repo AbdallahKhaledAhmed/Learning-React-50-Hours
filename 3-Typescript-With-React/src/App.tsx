@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "./components/Button";
 import User from "./components/User";
 import UserInfo from "./components/UserInfo";
 import AdminInfo from "./components/AdminInfo";
-import Counter from "./components/Counter";
-import UserInfoState from "./components/UserInfoState";
-import Todo from "./components/Todo";
-
+import { myContext } from "./components/ContextAPI";
 function App() {
+  const { count, increment, decrement } = useContext(myContext);
+
   return (
     <>
       <User name="Abdallah" age={20} isStudent={true} />
@@ -27,9 +26,9 @@ function App() {
         salary={50000}
         role="Team Lead"
       />
-      <Counter />
-      <UserInfoState />
-      <Todo />
+      <h1>{count}</h1>
+      <button onClick={increment}>increment</button>
+      <button onClick={decrement}>decrement</button>
     </>
   );
 }
