@@ -4,7 +4,7 @@ import User from "./components/User";
 import UserInfo from "./components/UserInfo";
 import AdminInfo from "./components/AdminInfo";
 import { myContext } from "./components/ContextAPI";
-import CounterReducer from "./components/CounterReducer";
+import UserList from "./components/UserList";
 function App() {
   const { count, increment, decrement } = useContext(myContext);
 
@@ -30,7 +30,7 @@ function App() {
       <h1>{count}</h1>
       <button onClick={increment}>increment</button>
       <button onClick={decrement}>decrement</button>
-      <CounterReducer />
+      <UserList />
     </>
   );
 }
