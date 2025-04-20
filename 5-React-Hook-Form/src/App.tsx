@@ -11,16 +11,17 @@ type userData = {
   confirmPassowrd: string;
   checked: boolean;
 };
-
 function App() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<userData>();
   const formSubmit: SubmitHandler<userData> = (data) => {
     console.log(data);
   };
+  const password = watch("passowrd", "");
   return (
     <div className="myStyle">
       <Form className="myStyleForm" onSubmit={handleSubmit(formSubmit)}>
@@ -28,7 +29,7 @@ function App() {
           <Form.Label>First Name</Form.Label>
           <Form.Control
             type="text"
-            {...register("firstName", { required: "fierst name is required" })}
+            {...register("firstName", { required: "Fierst Name is Required" })}
           />
         </Form.Group>
 
@@ -36,7 +37,7 @@ function App() {
           <Form.Label>Last Name</Form.Label>
           <Form.Control
             type="text"
-            {...register("lastName", { required: "second name is required" })}
+            {...register("lastName", { required: "Second Name is Required" })}
           />
         </Form.Group>
 
@@ -45,10 +46,10 @@ function App() {
           <Form.Control
             type="text"
             {...register("email", {
-              required: "email is required",
+              required: "Email is Required",
               pattern: {
                 value: /^\S+@\S+\.\S+$/,
-                message: "Please Enter a valid email",
+                message: "Please Enter a Valid Email",
               },
             })}
           />
@@ -62,10 +63,10 @@ function App() {
           <Form.Control
             type="password"
             {...register("passowrd", {
-              required: "password is required",
+              required: "Password is Required",
               minLength: {
                 value: 9,
-                message: "password must be at least 8 characters",
+                message: "Password Must Be At Least 8 Characters",
               },
             })}
           />
@@ -76,7 +77,10 @@ function App() {
           <Form.Control
             type="password"
             {...register("confirmPassowrd", {
-              required: "confirm password is required",
+              required: "Confirm Password is Required",
+              validate: (value) =>
+                value === password ||
+                "Confirm Password Must Be The Same As The Password",
             })}
           />
         </Form.Group>
@@ -84,7 +88,7 @@ function App() {
         <Form.Group className="mb-3">
           <Form.Check
             type="checkbox"
-            label="Check me out"
+            label="Stay Logged In"
             {...register("checked")}
           />
         </Form.Group>
