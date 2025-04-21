@@ -11,6 +11,9 @@ type userData = {
   confirmPassowrd: string;
   checked: boolean;
 };
+const formSubmit: SubmitHandler<userData> = (data) => {
+  console.log(data);
+};
 function App() {
   const {
     register,
@@ -18,10 +21,8 @@ function App() {
     watch,
     formState: { errors, isSubmitting },
   } = useForm<userData>();
-  const formSubmit: SubmitHandler<userData> = (data) => {
-    console.log(data);
-  };
   const password = watch("passowrd", "");
+  
   return (
     <div className="myStyle">
       <Form className="myStyleForm" onSubmit={handleSubmit(formSubmit)}>
