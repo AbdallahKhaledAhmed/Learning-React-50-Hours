@@ -9,6 +9,7 @@ const formAction = (formData: FormData) => {
 const CustomForm = () => {
   return (
     <form action={formAction}>
+      <h2>Form With Actions</h2>
       <label htmlFor="name">Name</label>
       <input type="text" id="name" name="name" />
       <br />
