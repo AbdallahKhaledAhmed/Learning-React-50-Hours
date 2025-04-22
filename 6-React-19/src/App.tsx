@@ -5,6 +5,7 @@ import { ThemeProvider } from "./components/1-use/2-Theme";
 import CustomForm from "./components/2-actions/Form";
 import UseFormTest from "./components/3-useForm/UseFormTest";
 import UseActionStateHook from "./components/4-useActionState/UseActionStateHook";
+import UseTransition from "./components/5-useTransition/useTransition";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <CustomForm />
       <UseFormTest />
       <UseActionStateHook />
+      <UseTransition />
     </div>
   );
 };
