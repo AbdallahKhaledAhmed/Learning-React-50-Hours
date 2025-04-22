@@ -1,8 +1,20 @@
 import FormButton from "./FormButton";
 
+const myFormAction = async (formData: FormData) => {
+  
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(formData.get("name"));
+      console.log(formData.get("password"));
+      console.log(formData.get("email"));
+      resolve(null);
+    }, 2000);
+  });
+};
+
 const UseFormTest = () => {
   return (
-    <form>
+    <form action={myFormAction}>
       <h2>Form with useFormStatus</h2>
       <label htmlFor="name">Name</label>
       <input type="text" id="name" name="name" />
