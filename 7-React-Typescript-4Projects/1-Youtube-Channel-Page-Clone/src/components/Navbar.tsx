@@ -2,9 +2,9 @@ import { ReactNode, useState } from "react";
 import { FaHome, FaInfoCircle, FaPhone } from "react-icons/fa";
 import { GoProjectSymlink } from "react-icons/go";
 import { SiCoursera } from "react-icons/si";
-import About from "./comps/About";
-import Home from "./comps/Home";
-import Contact from "./comps/Contact";
+import About from "./tabs/About";
+import Home from "./tabs/Home";
+import Contact from "./tabs/Contact";
 
 type NavItem = {
   id: string;

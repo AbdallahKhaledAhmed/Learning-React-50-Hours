@@ -1,4 +1,4 @@
-import HeroProfilePicture from "./comps/HeroProfilePicture";
+import HeroProfilePicture from "./tabs/HeroProfilePicture";
 
 const Hero = () => {
   return (
