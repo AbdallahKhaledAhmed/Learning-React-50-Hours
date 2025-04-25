@@ -4,9 +4,15 @@
   h2 {
     @apply font-semibold;
   }
+  textarea {
+    @apply outline-none block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm resize-none h-32;
+  }
 }
 
 @layer utilities {
+  .input-text {
+    @apply outline-none block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm;
+  }
   p.small-text {
     @apply text-neutral-600 text-xs;
   }

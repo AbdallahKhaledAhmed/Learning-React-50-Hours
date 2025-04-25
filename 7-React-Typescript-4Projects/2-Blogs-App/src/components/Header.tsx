@@ -11,7 +11,7 @@ const Header = () => {
         <input
           type="text"
           id="search"
-          className="outline-none w-[13rem]"
+          className="w-[13rem] outline-none"
           placeholder="Search..."
         />
       </div>
