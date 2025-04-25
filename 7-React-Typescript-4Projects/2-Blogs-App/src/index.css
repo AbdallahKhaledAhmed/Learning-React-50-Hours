@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@layer base {
+  h2 {
+    @apply font-semibold;
+  }
+}
+
+@layer utilities {
+  p.small-text {
+    @apply text-neutral-600 text-xs;
+  }
+}
