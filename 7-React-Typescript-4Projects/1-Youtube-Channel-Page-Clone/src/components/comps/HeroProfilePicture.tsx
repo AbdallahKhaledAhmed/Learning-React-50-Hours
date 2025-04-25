@@ -2,7 +2,9 @@ import { useState } from "react";
 import { FaCamera } from "react-icons/fa";
 
 const HeroProfilePicture = () => {
-  const [avatar, setAvatar] = useState("https://via.placeholder.com/100");
+  const [avatar, setAvatar] = useState(
+    "https://static.vecteezy.com/system/resources/thumbnails/002/227/847/small_2x/programmer-computer-expert-black-linear-icon-vector.jpg"
+  );
   return (
     <div>
       <div className="border overflow-hidden rounded-full w-40 h-40 relative flex">

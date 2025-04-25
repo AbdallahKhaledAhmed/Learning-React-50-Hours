@@ -3,7 +3,7 @@ import { FaCamera } from "react-icons/fa";
 
 const Banner = () => {
   const [url, setUrl] = useState<string>(
-    "https://via.placeholder.com/1500x400"
+    "https://mir-s3-cdn-cf.behance.net/project_modules/fs/54b6c068097599.5b50bca476b9b.gif"
   );
   return (
     <div className="w-full h-[240px] overflow-hidden">
