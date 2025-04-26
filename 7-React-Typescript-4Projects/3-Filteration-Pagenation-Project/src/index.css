@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+:root {
+  @apply bg-gray-800 text-white;
+}
+@layer components {
+  button {
+    @apply cursor-pointer flex justify-center items-center;
+  }
+  th,
+  td {
+    @apply px-5 py-3;
+  }
+}
+
+@layer utility {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+}
