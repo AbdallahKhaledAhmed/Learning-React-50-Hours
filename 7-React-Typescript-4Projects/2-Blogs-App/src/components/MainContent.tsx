@@ -1,50 +1,36 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { IoMdAddCircle } from "react-icons/io";
+import { FaEdit, FaTrash, FaBookmark } from "react-icons/fa";
+import Modal from "./Modal";
+
+export type Blog = {
+  title: string;
+  description: string;
+  imageURL: string;
+  date: Date;
+};
 
 const MainContent = () => {
   const modal = useRef<HTMLDialogElement>(null);
+  const editModal = useRef<HTMLDialogElement>(null);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  function deleteBlog(index: number) {
+    setBlogs((prev) => {
+      return prev.filter((_, ind) => ind !== index);
+    });
+  }
   return (
     <div className="w-17/24 flex flex-col h-full justify-center items-center mt-4 ">
-      <dialog
-        className="mx-auto my-auto rounded-xl relative w-120 h-[65vh]"
-        ref={modal}
-      >
-        <div className="flex bg-white flex-col flex-wrap p-8 pb-0 w-full gap-3">
-          <h1 className="text-2xl font-semibold text-neutral-700 absolute top-10">
-            Add Blog
-          </h1>
-          <input
-            type="text"
-            placeholder="Title"
-            className="mt-15 w-full input-text"
-          />
-          <textarea placeholder="Description" className="input-text" />
-          <input type="text" placeholder="Image URL" className="input-text" />
-          <input type="date" className="input-text" />
-
-          <div className="mt-5 inline-flex gap-3 w-full justify-end self-end">
-            <button className="bg-blue-600 text-white rounded-lg px-4 py-2 cursor-pointer">
-              Add
-            </button>
-            <button
-              className="bg-neutral-500 text-white rounded-lg px-4 py-2 cursor-pointer"
-              onClick={() => {
-                modal.current!.close();
-              }}
-            >
-              Cancel
-            </button>
-          </div>
-          <button
-            className="font-bold absolute top-4 right-4  rounded-full w-7 h-7 flex justify-center items-center text-neutral-700 cursor-pointer"
-            onClick={() => {
-              modal.current!.close();
-            }}
-          >
-            X
-          </button>
-        </div>
-      </dialog>
+      <Modal modalRef={modal} setBlogs={setBlogs} type="new" />
+      <Modal
+        modalRef={editModal}
+        setBlogs={setBlogs}
+        type="edit"
+        selectedIndex={selectedIndex}
+        data={selectedIndex !== null ? blogs[selectedIndex] : undefined}
+      />
       <button
         className="bg-black rounded text-white flex justify-center items-center gap-2 px-4 py-2 cursor-pointer w-fit"
         onClick={() => {
@@ -53,6 +39,48 @@ const MainContent = () => {
       >
         Add New Blog <IoMdAddCircle />
       </button>
+      <div className="w-full h-fit px-10 lg:px-50 md:px-20 pt-10 flex flex-col gap-4">
+        {blogs.map((blog, ind) => {
+          return (
+            <div
+              key={ind}
+              className="shadow-lg flex px-10 py-3 rounded-xl w-full"
+            >
+              <img
+                src={blog.imageURL || undefined}
+                className="w-36 h-24 object-cover rounded shadow-md mr-5"
+              />
+              <div className="flex flex-col  w-full">
+                <h2>{blog.title}</h2>
+                <p>{blog.description}</p>
+                <div className="flex justify-between mt-auto h-fit">
+                  <p className="small-text">
+                    {blog.date.toString() === "Invalid Date"
+                      ? ""
+                      : blog.date.toLocaleDateString()}
+                  </p>
+                  <div className="flex gap-2">
+                    <FaBookmark className="text-gray-500 cursor-pointer" />
+                    <FaEdit
+                      onClick={() => {
+                        setSelectedIndex(ind);
+                        editModal.current!.showModal();
+                      }}
+                      className="text-blue-500 cursor-pointer"
+                    />
+                    <FaTrash
+                      className="text-red-500 cursor-pointer"
+                      onClick={() => {
+                        deleteBlog(ind);
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
