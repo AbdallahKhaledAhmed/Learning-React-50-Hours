@@ -9,12 +9,15 @@
   }
   th,
   td {
-    @apply px-5 py-3;
+    @apply px-5 py-3 text-center border-b-2 border-gray-700;
   }
 }
 
 @layer utility {
   .flex-center {
     @apply flex justify-center items-center;
+  }
+  .completed {
+    @apply bg-green-600 rounded px-2 py-1 inline-block;
   }
 }
