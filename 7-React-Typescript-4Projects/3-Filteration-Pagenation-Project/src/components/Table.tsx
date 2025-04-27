@@ -37,8 +37,19 @@ const Table = () => {
     setDataToShow(
       dataFiltered
         .sort((a: data, b: data) => {
-          if (a[sort as keyof data] < b[sort as keyof data]) return -1;
-          if (a[sort as keyof data] > b[sort as keyof data]) return 1;
+          if (sort === "date") {
+            // Convert DD/MM/YYYY to proper Date objects
+            const [dayA, monthA, yearA] = a.date.split("/");
+            const [dayB, monthB, yearB] = b.date.split("/");
+
+            const dateA = new Date(+yearA, +monthA - 1, +dayA);
+            const dateB = new Date(+yearB, +monthB - 1, +dayB);
+
+            return dateA.getTime() - dateB.getTime();
+          } else {
+            if (a[sort as keyof data] < b[sort as keyof data]) return -1;
+            if (a[sort as keyof data] > b[sort as keyof data]) return 1;
+          }
           return 0;
         })
         .filter((_, ind) => {
