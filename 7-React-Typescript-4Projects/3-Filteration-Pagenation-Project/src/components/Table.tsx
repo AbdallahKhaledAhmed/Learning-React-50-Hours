@@ -18,67 +18,61 @@ const Table = () => {
   const [dataFiltered, setDataFiltered] = useState<data[]>([]);
   const [dataToShow, setDataToShow] = useState<data[]>([]);
   const { sort, textFilter } = use(filterContext);
+  // First effect to handle filtering
   useEffect(() => {
-    setDataFiltered(
-      data.filter((obj) => {
-        return (
-          obj.client.toLowerCase().startsWith(textFilter.name.toLowerCase()) &&
-          obj.country
-            .toLowerCase()
-            .startsWith(textFilter.country.toLowerCase()) &&
-          obj.email.toLowerCase().startsWith(textFilter.email.toLowerCase()) &&
-          obj.project
-            .toLowerCase()
-            .startsWith(textFilter.project.toLowerCase()) &&
-          obj.status.toLowerCase().startsWith(textFilter.status.toLowerCase())
-        );
-      })
-    );
-    setDataToShow(
-      dataFiltered
-        .sort((a: data, b: data) => {
-          if (sort === "date") {
-            // Convert DD/MM/YYYY to proper Date objects
-            const [dayA, monthA, yearA] = a.date.split("/");
-            const [dayB, monthB, yearB] = b.date.split("/");
+    const filtered = data.filter((obj) => {
+      return (
+        obj.client.toLowerCase().startsWith(textFilter.name.toLowerCase()) &&
+        obj.country
+          .toLowerCase()
+          .startsWith(textFilter.country.toLowerCase()) &&
+        obj.email.toLowerCase().startsWith(textFilter.email.toLowerCase()) &&
+        obj.project
+          .toLowerCase()
+          .startsWith(textFilter.project.toLowerCase()) &&
+        obj.status.toLowerCase().startsWith(textFilter.status.toLowerCase())
+      );
+    });
+    setDataFiltered(filtered);
+  }, [textFilter]);
+  // Second effect to handle sorting and pagination
+  useEffect(() => {
+    const sorted = [...dataFiltered].sort((a: data, b: data) => {
+      if (sort === "date") {
+        const [dayA, monthA, yearA] = a.date.split("/");
+        const [dayB, monthB, yearB] = b.date.split("/");
+        const dateA = new Date(+yearA, +monthA - 1, +dayA);
+        const dateB = new Date(+yearB, +monthB - 1, +dayB);
+        return dateA.getTime() - dateB.getTime();
+      } else {
+        if (a[sort as keyof data] < b[sort as keyof data]) return -1;
+        if (a[sort as keyof data] > b[sort as keyof data]) return 1;
+        return 0;
+      }
+    });
 
-            const dateA = new Date(+yearA, +monthA - 1, +dayA);
-            const dateB = new Date(+yearB, +monthB - 1, +dayB);
+    const paged = sorted.filter((_, ind) => {
+      return ind >= showCount && ind < showCount + itemsPerPage;
+    });
 
-            return dateA.getTime() - dateB.getTime();
-          } else {
-            if (a[sort as keyof data] < b[sort as keyof data]) return -1;
-            if (a[sort as keyof data] > b[sort as keyof data]) return 1;
-          }
-          return 0;
-        })
-        .filter((_, ind) => {
-          return ind >= showCount && ind < showCount + itemsPerPage;
-        })
-    );
-  }, [
-    showCount,
-    sort,
-    textFilter.name,
-    textFilter.country,
-    textFilter.email,
-    textFilter.project,
-    textFilter.status,
-    dataFiltered,
-  ]);
+    setDataToShow(paged);
+  }, [dataFiltered, sort, showCount]);
+
   return (
     <>
       <table className="border-2 bg-gray-900 mr-5 border-gray-700 w-full">
         <thead>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Country</th>
-          <th>Email</th>
-          <th>Project Name</th>
-          <th>Task Progress</th>
-          <th>Status</th>
-          <th>Date</th>
-          <th>Actions</th>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Email</th>
+            <th>Project Name</th>
+            <th>Task Progress</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
         </thead>
         <tbody>
           {dataToShow.map((obj, ind) => {
