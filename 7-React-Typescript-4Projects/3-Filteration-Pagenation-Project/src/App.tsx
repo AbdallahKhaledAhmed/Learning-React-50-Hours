@@ -1,6 +1,7 @@
 import HeaderComp from "./components/HeaderComp";
 import SideBar from "./components/SideBar";
 import Table from "./components/Table";
+import { FilterProvider } from "./utils/FilterProvider";
 
 const App = () => {
   return (
@@ -10,8 +11,10 @@ const App = () => {
           <SideBar />
         </div>
         <div className="flex flex-col w-full pr-10">
-          <HeaderComp />
-          <Table />
+          <FilterProvider>
+            <HeaderComp />
+            <Table />
+          </FilterProvider>
         </div>
       </div>
     </div>
