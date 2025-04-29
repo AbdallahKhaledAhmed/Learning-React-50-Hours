@@ -14,7 +14,6 @@ const ProductPage = () => {
       })
       .catch(() => <div>No Data!</div>);
   }, [id]);
-  console.log(data);
   return (
     <div className="flex flex-col w-full pt-10 pl-10">
       <Link className="bg-black text-white rounded px-4 py-2 w-fit" to={"/"}>
