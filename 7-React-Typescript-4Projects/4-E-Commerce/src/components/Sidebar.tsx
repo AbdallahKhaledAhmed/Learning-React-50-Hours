@@ -40,7 +40,7 @@ const Sidebar = () => {
       });
   }, []);
   return (
-    <aside className="w-1/3 min-w-80 flex flex-col py-5 pt-20 px-5 gap-5">
+    <aside className="w-1/3 min-w-90 flex flex-col py-5 pt-20 px-5 gap-5">
       <div className="w-full border rounded px-5 py-5 flex flex-col gap-6">
         <b className="text-xl">Top Sellers</b>
         {showSellers(sellers)}

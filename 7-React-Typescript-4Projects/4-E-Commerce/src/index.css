@@ -31,4 +31,13 @@
   .small-text {
     @apply text-sm text-neutral-600;
   }
+  .page-num {
+    @apply rounded-full border  w-10 h-10;
+  }
+  .selected-page {
+    @apply rounded-full border  w-10 h-10 text-white bg-black;
+  }
+  .page-nav {
+    @apply rounded-full border w-20 h-10;
+  }
 }

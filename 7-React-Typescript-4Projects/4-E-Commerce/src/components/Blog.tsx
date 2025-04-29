@@ -12,12 +12,12 @@ const Blog = ({ title, publisher, commentsCount, likesCount }: Props) => {
       <p className="small-text">Published by {publisher}</p>
       <div className="flex flex-col small-text">
         <div className="flex gap-4">
-          <div className="flex gap-1 items-center">
-            <MessageCircle className="cursor-pointer" />
+          <div className="flex gap-1 items-center cursor-pointer">
+            <MessageCircle />
             <span>{likesCount}</span>
           </div>
-          <div className="flex gap-1 items-center">
-            <ThumbsUp className="cursor-pointer" />
+          <div className="flex gap-1 items-center cursor-pointer">
+            <ThumbsUp />
             <span>{commentsCount}</span>
           </div>
         </div>
