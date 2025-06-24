@@ -27,7 +27,7 @@ Welcome to the **React 50-Hour Mastery** repository! This project is a comprehen
 
 1. **Clone the repository:**
    ```powershell
-   git clone https://github.com/your-username/React-50-hours-course.git
+   git clone https://github.com/AbdallahKhaledAhmed/React-50-hours-course.git
    ```
 2. **Navigate to a project folder:**
    ```powershell
